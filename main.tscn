@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4xwfmw41hefn"]
+
+[ext_resource type="PackedScene" uid="uid://cjiyriulnerk7" path="res://snake.tscn" id="1_bea3h"]
+[ext_resource type="Script" path="res://main.gd" id="1_muoqh"]
+[ext_resource type="PackedScene" uid="uid://dw7t3tlyk5ccj" path="res://food.tscn" id="3_rnpib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wbcw"]
+size = Vector2(40, 660)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmlik"]
+size = Vector2(40, 660)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu11v"]
+size = Vector2(1164, 40)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_muoqh")
+snake_scene = ExtResource("1_bea3h")
+food_scene = ExtResource("3_rnpib")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" groups=["Wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(-20, 324)
+shape = SubResource("RectangleShape2D_6wbcw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1172, 324)
+shape = SubResource("RectangleShape2D_hmlik")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(576, -20)
+shape = SubResource("RectangleShape2D_mu11v")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(576, 668)
+shape = SubResource("RectangleShape2D_mu11v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="OnScreenElements" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

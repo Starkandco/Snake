@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjiyriulnerk7"]
+
+[ext_resource type="Script" path="res://FirstBlock.gd" id="1_vm61b"]
+[ext_resource type="Shader" path="res://new_shader.gdshader" id="2_heksx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpkm6"]
+shader = ExtResource("2_heksx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdudf"]
+resource_local_to_scene = true
+size = Vector2(23, 23)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q11jh"]
+shader = ExtResource("2_heksx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxtcq"]
+resource_local_to_scene = true
+size = Vector2(23, 23)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a54xr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymccg"]
+shader = ExtResource("2_heksx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mnkd"]
+resource_local_to_scene = true
+size = Vector2(23, 23)
+
+[node name="Snake" type="Node2D" groups=["SnakeNode"]]
+position = Vector2(0, 20)
+
+[node name="FirstBlock" type="CharacterBody2D" parent="." groups=["Snake"]]
+position = Vector2(48, 0)
+script = ExtResource("1_vm61b")
+
+[node name="ColorRect" type="ColorRect" parent="FirstBlock"]
+material = SubResource("ShaderMaterial_wpkm6")
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstBlock"]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_cdudf")
+
+[node name="SecondBlock" type="CharacterBody2D" parent="." groups=["Snake"]]
+position = Vector2(24, 0)
+
+[node name="ColorRect" type="ColorRect" parent="SecondBlock"]
+material = SubResource("ShaderMaterial_q11jh")
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondBlock"]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_cxtcq")
+
+[node name="ThirdBlock" type="CharacterBody2D" parent="." groups=["LastBlock", "Snake"]]
+material = SubResource("ShaderMaterial_a54xr")
+
+[node name="ColorRect" type="ColorRect" parent="ThirdBlock"]
+material = SubResource("ShaderMaterial_ymccg")
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdBlock"]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_4mnkd")

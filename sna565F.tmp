@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjiyriulnerk7"]
+
+[ext_resource type="Script" path="res://FirstBlock.gd" id="1_vm61b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3dwx"]
+
+[node name="Snake" type="Node2D"]
+position = Vector2(0, 20)
+
+[node name="FirstBlock" type="CharacterBody2D" parent="."]
+position = Vector2(40, 0)
+script = ExtResource("1_vm61b")
+
+[node name="ColorRect" type="ColorRect" parent="FirstBlock"]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstBlock"]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_l3dwx")
+
+[node name="SecondBlock" type="CharacterBody2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="ColorRect" type="ColorRect" parent="SecondBlock"]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondBlock"]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_l3dwx")
+
+[node name="ThirdBlock" type="CharacterBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ThirdBlock"]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdBlock"]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_l3dwx")
